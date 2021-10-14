@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>MVC APP</title>
+    <link rel="stylesheet" href="view.css">
+</head>
+<body bgcolor="#ffebcd" >
+<script>
+    function doSearch () {
+        // (A1) GET SEARCH TERM
+        var data = new FormData();
+        //data.append("search", document.getElementById("search").value);
+
+        data.append("search", document.getElementById("search-value").value);
+        let select = document.getElementById('search-name');
+        let options = select.options[select.selectedIndex].value;
+        data.append("search-name", options);
+
+        // (A2) AJAX - USE HTTP:// NOT FILE://
+        var xhr = new XMLHttpRequest();
+        xhr.open("POST", "../Controller/Controller.php");
+        xhr.onload = function(){
+            let results = document.getElementById("results"),
+                search = JSON.parse(this.response);
+            results.innerHTML = "";
+            if (search !== null) { for (let s of search) {
+                results.innerHTML += `<div>
+                   <tr>
+                    <td>${s.id}</td>
+                    <td>${s.name}</td>
+                    <td>${s.city}</td>
+                    <td>${s.age}</td>
+                    </tr>
+                    </div>`;
+            }}
+        };
+        xhr.send(data);
+        return false;
+    }
+</script>
+
+<!-- (B) SEARCH FORM -->
+
+<div align="center">
+<form onsubmit="return doSearch()" >
+    <h1 id="h01">Search Data Form</h1>
+   <!-- <input type="text" id="search" required/>
+    <input type="submit" value="Search"/>-->
+    <label for="search-name"></label>
+    <select id="search-name">
+        <option value="name">Name</option>
+        <option value="city">City</option>
+        <option value="age">Age</option>
+    </select>
+
+    <label for="search-value"></label>
+    <input type="text" id="search-value"/><br><br>
+
+    <input type="submit" value="Search" id="s01"/>
+    <br><br>
+</form>
+</div>
+
+<!-- (C) SEARCH RESULTS -->
+<br>
+<!--<div id="results" align="center"></div>-->
+<table id="results" border="1" align="center">
+
+</table>
+</body>
+</html>

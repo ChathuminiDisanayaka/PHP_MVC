@@ -1,0 +1,43 @@
+table, td, th{
+    border: 2px solid blue;
+    border-collapse: collapse;
+    border-spacing: 15px;
+    margin: 0 auto;
+    padding: 20px;
+}
+td {
+    font-family: "Times New Roman";
+    font-size: 25px;
+    color: black;
+}
+
+#h01{
+    color: darkblue;
+}
+#search-value{
+    width: 10%;
+    padding: 10px 20px;
+    margin: 8px 0;
+    border-radius: 4px;
+    font-family: inherit;
+    font-size: 125%;
+    background-color: azure;
+}
+#search-name{
+    width: 10%;
+    padding: 10px 20px;
+    margin: 8px 0;
+    border-radius: 4px;
+    font-family: inherit;
+    font-size: 125%;
+    background-color: azure;
+}
+#s01{
+    width: 10%;
+    padding: 10px 20px;
+    margin: 8px 0;
+    border-radius: 4px;
+    font-family: inherit;
+    font-size: 125%;
+    background-color: azure;
+}
